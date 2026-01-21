@@ -46,6 +46,28 @@ const Checkout = () => {
     // Simulate order processing
     await new Promise(resolve => setTimeout(resolve, 2000));
     
+    // Prepare WhatsApp message with order details
+    const orderItemsText = items.map(item => 
+      `- ${item.name} x${item.quantity} = Rs. ${(item.price * item.quantity).toLocaleString()}`
+    ).join('\n');
+
+    const message = `*New Order from Noorli.pk*\n\n` +
+      `*Customer Details:*\n` +
+      `Name: ${orderDetails.fullName}\n` +
+      `Email: ${orderDetails.email || 'Not provided'}\n` +
+      `Phone: ${orderDetails.phone}\n` +
+      `Address: ${orderDetails.address}, ${orderDetails.city}${orderDetails.postalCode ? ', ' + orderDetails.postalCode : ''}\n` +
+      `Notes: ${orderDetails.notes || 'None'}\n\n` +
+      `*Payment Method:* ${paymentMethod}\n\n` +
+      `*Order Items:*\n${orderItemsText}\n\n` +
+      `*Subtotal:* Rs. ${totalPrice.toLocaleString()}\n` +
+      `*Shipping:* Rs. ${shippingFee}\n` +
+      `*Total:* Rs. ${grandTotal.toLocaleString()}`;
+
+    // Open WhatsApp with pre-filled message
+    const whatsappUrl = `https://wa.me/923261182021?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
     toast({
       title: "Order Placed Successfully! 🎉",
       description: "Thank you for your order. You will receive a confirmation shortly.",
