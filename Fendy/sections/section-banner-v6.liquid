@@ -1,0 +1,251 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v6" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v6">
+    <div class="container container-v1 lazyload">
+      {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      {% if block.type == "banner" %}
+      <div class="row no-gutters"> 
+        <div class="col-banner-6 order-sm-1 {% if block.settings.select_pos =='left' %} order-md-1 {% elsif block.settings.select_pos == 'right'%} order-md-2  {% endif %}">
+          <div class="box-img img-left" style="background-image: url({% if section.settings.img_banner_left != blank %} {{section.settings.img_banner_left | img_url : 'master'}} {% else %} //placehold.it/1142x600 {% endif %} )">
+            <a href="{{block.settings.url_banner1}}">
+              {% if block.settings.img_banner_left != blank %}
+              <img data-src="{{block.settings.img_banner_left | img_url : 'master' }}"  class="lazyload img-fluid w-100" alt>
+              {% else %}
+              <img data-src= "//via.placeholder.com/928x465" class="lazyload img-fluid w-100" alt>
+              {% endif %}
+            </a>
+            <div class="banner-content">
+              {% if block.settings.block_title != blank %}
+              <h3 class="title-banner" style="color: {{block.settings.color_title}}">
+                {{block.settings.block_title}}
+              </h3>
+              {% endif %}
+              {% if block.settings.block_subtitle != blank %}
+              <p class="sub-title" style="color: {{block.settings.color_sub_title}}">
+                {{block.settings.block_subtitle}}
+              </p>
+              {% endif %}
+
+              {% if block.settings.button_banner != blank %}
+              <a href="{{block.settings.url_banner1}}" class="button-shop" title="">
+                {{block.settings.button_banner}}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-banner-4 order-sm-2 {% if block.settings.select_pos =='left' %} order-md-2  {% elsif block.settings.select_pos == 'right'%} order-md-1 {% endif %}">
+          <div class="js-banner-v6">
+            <div class="box-img img-right">
+              <a href="{{block.settings.url_banner2}}">
+                {% if block.settings.img_banner_right1 != blank %}
+                <img data-src="{{block.settings.img_banner_right1 | img_url : 'master'}}" class="lazyload img-fluid w-100" alt >
+                {% else %}
+                <img data-src="//via.placeholder.com/448x465" class="lazyload img-fluid w-100" alt>
+                {% endif %}
+              </a>
+            </div>
+            <div class="box-img img-right">
+              <a href="{{block.settings.url_banner2}}">
+                {% if block.settings.img_banner_right2 != blank %}
+                <img data-src="{{block.settings.img_banner_right2 | img_url : 'master'}}" class="lazyload img-fluid w-100" alt >
+                {% else %}
+                <img data-src="//via.placeholder.com/448x465" class="lazyload img-fluid w-100" alt>
+                {% endif %}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>
+  {% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+  {% if block.type == "banner" %}
+  .section-banner-v6 .box-img .banner-content .button-shop {
+    border-color: {{block.settings.color_button}};
+    color: {{block.settings.color_button}};
+  }
+  .section-banner-v6 .box-img .banner-content .button-shop:hover {
+    background: {{block.settings.bg_color_button_hover}};
+    color: {{block.settings.color_button_hover}};
+    border-color: transparent;
+  }
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "BANNER V6",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "select_pos",
+          "label": "Select Position Content",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "header",
+          "content": "Settings Banner 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_banner_left",
+          "label": "Image Banner 1",
+          "info": "1298 x 462px recommended"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title Banner",
+          "default": "Happy Birthday Dog!"
+        },
+        {
+          "type": "color",
+          "id": "color_title",
+          "label": "Color Title banner",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "block_subtitle",
+          "label": "Sub Title Banner",
+          "default": "We believe that pets deserve quality care and love and because we make our four-legged friends happy."
+        },
+        {
+          "type": "color",
+          "id": "color_sub_title",
+          "label": "Color Sub Title banner",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "button_banner",
+          "label": "Button Banner",
+          "default": "SHOP NOW"
+        },
+        {
+          "type": "color",
+          "id": "color_button",
+          "label": "Color Button",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "bg_color_button",
+          "label": "Background Color Button",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "color_button_hover",
+          "label": "Color Button Hover",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "bg_color_button_hover",
+          "label": "Background Button Hover",
+          "default": "#d25b5b"
+        },
+        {
+          "type": "url",
+          "id": "url_banner1",
+          "label": "URL 1",
+          "default": "/collections/all"
+        },
+        {
+          "type": "header",
+          "content": "Settings Banner 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_banner_right1",
+          "label": "Image 1",
+          "info": "432 x 462px recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_banner_right2",
+          "label": "Image 2 ",
+          "info": "432 x 462px recommended"
+        },
+        {
+          "type": "url",
+          "id": "url_banner2",
+          "label": "URL 2",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BANNER V6",
+      "category": "HOME",
+      "blocks": [
+        {
+          "type": "banner",
+          "settings": {
+            "block_title": "Happy Birthday Dog!",
+            "block_subtitle": "We believe that pets deserve quality care and love and because we make our four-legged friends happy."
+          }
+        },
+        {
+          "type": "banner",
+          "settings": {
+            "block_title": "Happy Birthday Dog!",
+            "block_subtitle": "We believe that pets deserve quality care and love and because we make our four-legged friends happy."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

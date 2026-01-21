@@ -1,0 +1,258 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-info-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-info-v1 {% if section.settings.enable_margin_top %}mt-5{% endif %}" style="background: {{section.settings.bg_color}}">
+    <div class="container container-v2">
+      <div class="text-center">
+        {% if section.settings.info_title != blank %}
+        <div class="title_heading">{{section.settings.info_title}}</div>
+        {% endif %}
+        
+        {% if section.settings.info_des != blank %}
+        <div class="info-v1-des mt-4">{{section.settings.info_des}}</div>
+        {% endif %}
+      </div>
+      <div class="row mini-content align-items-center">
+        <div class="col-lg-4 col-12 order-lg-1 order-2 order-md-2 col-md-6 text-lg-left text-md-center pt-lg-5 text-center">
+          
+          {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          {% if block.type == "Info" %}
+          <div class="info-content">
+            <div class="info">
+              <div class="image">
+                {% if block.settings.img_content != blank %}
+                <img src="{{block.settings.img_content|img_url:'master'}}" alt="banner" />
+                {% else %}
+                <img src="//via.placeholder.com/60x60">
+                {% endif %}
+              </div>
+              <div class="content">
+                {% if block.settings.mini_title != blank %}
+                <div class="mini-title">
+                  {{block.settings.mini_title}}
+                </div>
+                {% endif %}
+                {% if block.settings.mini_des !=blank  %}
+                <div class="mini-des">
+                  {{ block.settings.mini_des }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          
+          
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          
+        </div>
+        
+        <div class="col-lg-4 order-md-1 order-1 order-lg-2 col-md-12 text-md-center col-12 pb-4  pb-lg-0">
+          <div class="image-center text-center">
+            <a href="" class="adv-thumb-link d-block">
+              {% if section.settings.img_banner_info != blank %}
+              <img src="{{section.settings.img_banner_info|img_url:'master'}}" alt="banner" />
+              {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}  
+              {% endif %}
+            </a>
+          </div>
+          
+        </div>
+        <div class="col-lg-4 text-lg-right order-md-3 order-3 order-lg-3 col-md-6 text-md-center pt-lg-5 col-12 text-center">
+          
+          
+          {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          {% if block.type == "Info-2" %}
+          <div class="info-content info-right">
+            <div class="info">
+              
+              <div class="content">
+                {% if block.settings.mini_title_right != blank %}
+                <div class="mini-title">
+                  {{block.settings.mini_title_right}}
+                </div>
+                {% endif %}
+                
+                {% if block.settings.mini_des_right !=blank  %}
+                <div class="mini-des">
+                  {{ block.settings.mini_des_right }}
+                </div>
+                {% endif %}
+              </div>
+              
+              <div class="image">
+                {% if block.settings.img_content_2 != blank %}
+                <img src="{{block.settings.img_content_2|img_url:'master'}}" alt="banner" />
+                {% else %}
+                <img src="//via.placeholder.com/60x60">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "INFO V1",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_margin_top",
+      "label": "Enable Margin Top",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "text",
+      "id": "info_title",
+      "label": "Title Info",
+      "default": "Plant Care Guide"
+    },
+    {
+      "type": "text",
+      "id": "info_des",
+      "label": "Description Info",
+      "default": "Unique Flavors and Fresh Coffee"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner_info",
+      "info": "514 x 572px recommended",
+      "label": "Image center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Info",
+      "name": "Infomation-left",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img_content",
+          "info": "60 x 60px recommended",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "mini_title",
+          "label": "Mini Title",
+          "default": "Clean Air"
+        },
+        {
+          "type": "text",
+          "id": "mini_des",
+          "label": "Mini Description",
+          "default": "Lorem Ipsum Is Simply Dummy Text Generator Volput Nulla Content"
+        }
+      ]
+    },
+    {
+      "type": "Info-2",
+      "name": "Infomation-right",
+      "settings": [
+        {
+          "type": "url",
+          "id": "banner_url",
+          "label": "URL",
+          "default": "/collections/all"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_content_2",
+          "info": "60 x 60px recommended",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "mini_title_right",
+          "label": "Mini Title Right",
+          "default": "Hand Planted"
+        },
+        {
+          "type": "text",
+          "id": "mini_des_right",
+          "label": "Mini Description Right",
+          "default": "Lorem Ipsum Is Simply Dummy Text Generator Volput Nulla Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "INFO V1",
+      "category": "HOME",
+      "blocks": [
+        {
+          "type": "Info",
+          "settings": {
+            "mini_title": "Clean Air",
+            "mini_des": "Lorem Ipsum Is Simply Dummy Text Generator Volput Nulla Content"
+          }
+        },
+        {
+          "type": "Info",
+          "settings": {
+            "mini_title": "Water Deeply",
+            "mini_des": "Lorem Ipsum Is Simply Dummy Text Generator Volput Nulla Content"
+          }
+        },
+        {
+          "type": "Info-2",
+          "settings": {
+            "mini_title_right": "Hand Planted",
+            "mini_des_right": "Lorem Ipsum Is Simply Dummy Text Generator Volput Nulla Content"
+          }
+        },
+        {
+          "type": "Info-2",
+          "settings": {
+            "mini_title_right": "Natural Sunlight",
+            "mini_des_right": "Lorem Ipsum Is Simply Dummy Text Generator Volput Nulla Content"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

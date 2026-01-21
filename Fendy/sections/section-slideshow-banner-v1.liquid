@@ -1,0 +1,616 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-slideshow-banner-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-slideshow-banner-v1">
+    <div class="container container-v1">
+      <div class="row">
+        <div class="col-lg-6 col-12">
+          <div class="slick-slide-h1 js-slideshow-banner-v1">       
+            {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+            {% if block.type == "slideshow" %}
+            <div class="item-slide-banner">
+              <div class="info-slide-banner">
+                <div class="picture-slideshow">
+                  {% if block.settings.block_bg_image != blank %}
+                  <img src="{{block.settings.block_bg_image | img_url: 'master'}}" class="img-fluid w-100" alt="slideshow">
+                  {% else %}
+                  <img src="//via.placeholder.com/691x698" class="img-fluid w-100" alt="slideshow">
+                  {% endif %}
+                </div>
+
+                <div class="box-content">
+                  {% if block.settings.block_title or block.settings.block_sub_title or block.settings.block_desc or block.settings.block_buton != blank %}
+                  <div class="box-info box-info-{{block.id}} {% if block.settings.select_textalign_content == 'left' %} text-left {% elsif block.settings.select_textalign_content == 'center' %} text-center {% else %} text-right {% endif %}">                          
+                    
+                    {% if block.settings.block_subtitle != blank %}
+                    <div class="box-subtitle box-subtitle-{{block.id}} animated">
+                      <p style="color:{{block.settings.color_block_subtitle}};">{{ block.settings.block_subtitle }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if block.settings.block_title != blank %}
+                    <div class="box-title box-title-{{block.id}} animated">
+                      <h2 class="title-slide" style="color:{{block.settings.color_block_title}};">{{ block.settings.block_title }}</h2>
+                    </div>
+                    {% endif %}
+
+                    {% if block.settings.block_subtitle2 != blank %}
+                    <div class="box-subtitle2 box-subtitle2-{{block.id}} animated">
+                      <p class="mb-0" style="color:{{block.settings.color_block_subtitle2}};">{{block.settings.block_subtitle2}}</p>
+                    </div>
+                    {% endif %}
+
+
+                    {% if block.settings.block_buton != blank %}
+                    <div class="box-button">
+                      <a class="button-shop button-shop-{{block.id}}  animated" href="{{block.settings.block_url}}">
+                        {{ block.settings.block_buton }}
+                      </a>
+                    </div>
+                    {% endif %}
+
+                  </div>
+                  {% endif %}
+                </div>          
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+
+          </div>
+        </div>
+        <div class="col-lg-6 col-12 banner-slide">
+          <div class="banner banner-1">
+            <div class="banner-inner">
+              <div class="banner-thumb"> 
+                {% if section.settings.banner_img1 != blank %}
+                <a href="{{ section.settings.banner_url1 }}">
+                  <img src="{{section.settings.banner_img1|img_url:'master'}}" class="img-fluid" alt="banner">
+                </a>
+                {% else %}
+                <a href="{{ section.settings.banner_url1 }}">
+                  <img src="//via.placeholder.com/707x349" class="img-fluid" alt="banner">
+                </a>
+                {% endif %}
+              </div>
+              <div class="banner-info">
+                <div class="banner-content">
+                  {% if section.settings.banner_title1 != blank %}
+                  <h3>
+                    <a href="{{ section.settings.banner_url1 }}">
+                      {{section.settings.banner_title1}}
+                    </a>
+                  </h3>
+                  {% endif %}
+
+                  {% if section.settings.banner_desc1 != blank %}
+                  <p class="mb-0">
+                    {{section.settings.banner_desc1}}
+                  </p>
+                  {% endif %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="banner banner-2">
+            <div class="banner-inner">
+              <div class="banner-thumb"> 
+                {% if section.settings.banner_img2 != blank %}
+                <a href="{{ section.settings.banner_url2 }}">
+                  <img src="{{section.settings.banner_img2|img_url:'master'}}" class="img-fluid" alt="banner">
+                </a>
+                {% else %}
+                <a href="{{ section.settings.banner_url2 }}">
+                  <img src="//via.placeholder.com/707x349" class="img-fluid" alt="banner">
+                </a>
+                {% endif %}
+              </div>
+              <div class="banner-info">
+                <div class="banner-content">
+                  {% if section.settings.banner_title2 != blank %}
+                  <h3>
+                    <a href="{{ section.settings.banner_url2 }}">
+                      {{section.settings.banner_title2}}
+                    </a>
+                  </h3>
+                  {% endif %}
+
+                  {% if section.settings.banner_desc2 != blank %}
+                  <p class="mb-0">
+                    {{section.settings.banner_desc2}}
+                  </p>
+                  {% endif %}
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  
+  {% for block in section.blocks %}
+  {% if block.type == 'slideshow' %}
+  .section-slideshow-banner-v1 .item-slide-banner .info-slide-banner .box-content .box-button .button-shop-{{block.id}} {
+    color : {{block.settings.color_block_button}};
+  }
+  .section-slideshow-banner-v1 .item-slide-banner .info-slide-banner .box-content .box-button .button-shop-{{block.id}}:hover {
+    color : {{block.settings.color_block_button_hover}};
+  }
+  .section-slideshow-banner-v1 .item-slide-banner .info-slide-banner .box-content .box-button .button-shop-{{block.id}}:before {
+    background : {{block.settings.color_block_button}};
+  }
+  .section-slideshow-banner-v1 .item-slide-banner .info-slide-banner .box-content .box-button .button-shop-{{block.id}}:hover:before {
+    background : {{block.settings.color_block_button_hover}};
+  }
+
+  .section-slideshow-banner-v1 .slick-active .info-slide-banner .box-info-{{block.id}} .box-title-{{block.id}}{ 	 
+    -webkit-animation-name: {{block.settings.effect_title}};
+    animation-name:  {{block.settings.effect_title}}; ;
+  }
+  
+  .section-slideshow-banner-v1 .slick-active .info-slide-banner .box-info-{{block.id}} .button-shop-{{block.id}}{ 	 
+    -webkit-animation-name: {{block.settings.effect_button}};
+    animation-name:  {{block.settings.effect_button}}; ;
+  }
+
+  {% endif %}
+  {% endfor %}
+</style>
+{% schema %}
+{
+  "name": "SLIDESHOW BANNER V1",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner"
+    },
+    {
+      "type": "header",
+      "content": "Banner 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_img1",
+      "label": "Banner image 1",
+      "info": "707 x 349px recommended"
+    },
+    {
+      "type": "text",
+      "id": "banner_title1",
+      "label": "Banner title 1",
+      "default": "Storage"
+    },
+    {
+      "type": "text",
+      "id": "banner_desc1",
+      "label": "Banner description 1",
+      "default": "Crisp, Clean Dining Room Designs for Every Taste"
+    },
+    {
+      "type": "text",
+      "id": "banner_url1",
+      "label": "Button URL banner 1",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Banner 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_img2",
+      "label": "Banner image 2",
+      "info": "707 x 349px recommended"
+    },
+    {
+      "type": "text",
+      "id": "banner_title2",
+      "label": "Banner title 2",
+      "default": "Lighting"
+    },
+    {
+      "type": "text",
+      "id": "banner_desc2",
+      "label": "Banner description 2",
+      "default": "Bring some light to your life with our lighting designs"
+    },
+    {
+      "type": "text",
+      "id": "banner_url2",
+      "label": "Button URL banner 2",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slideshow",
+      "name": "slideshow",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_bg_image",
+          "label": "Image slideshow",
+          "info": "691 x 698px recommended"
+        },
+        {
+          "type": "select",
+          "id": "select_textalign_content",
+          "label": "Text Align Content",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "header",
+          "content": "Title"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title sideshow",
+          "default": "Funiter Chair"
+        },
+        {
+          "type": "color",
+          "id": "color_block_title",
+          "label": "Color Title sideshow",
+          "default": "#000"
+        },
+        {
+          "type": "select",
+          "id": "effect_title",
+          "label": "Choose The Effect Title",
+          "info": "[Reference effect in here](https://animate.style/)",
+          "options": [
+            {
+              "value": "bounce",
+              "label": "Bounce"
+            },
+            {
+              "value": "flash",
+              "label": "Flash"
+            },
+            {
+              "value": "pulse",
+              "label": "Pulse"
+            },
+            {
+              "value": "rubberBand",
+              "label": "Rubberband"
+            },
+            {
+              "value": "shake",
+              "label": "Shake"
+            },
+            {
+              "value": "swing",
+              "label": "Swing"
+            },
+            {
+              "value": "tada",
+              "label": "tada"
+            },
+            {
+              "value": "wobble",
+              "label": "Wobble"
+            },
+            {
+              "value": "jello",
+              "label": "Jello"
+            },
+            {
+              "value": "heartBeat",
+              "label": "HeartBeat"
+            },
+            {
+              "value": "backInDown",
+              "label": "Back In Down"
+            },
+            {
+              "value": "backInLeft",
+              "label": "Back In Left"
+            },
+            {
+              "value": "backInRight",
+              "label": "Back In Right"
+            },
+            {
+              "value": "backInUp",
+              "label": "Back In Up"
+            },
+            {
+              "value": "bounceIn",
+              "label": "BounceIn"
+            },
+            {
+              "value": "bounceInDown",
+              "label": "Bounce In Down"
+            },
+            {
+              "value": "bounceInLeft",
+              "label": "Bounce In Left"
+            },
+            {
+              "value": "bounceInRight",
+              "label": "Bounce In Right"
+            },
+            {
+              "value": "fadeIn",
+              "label": "Fade In"
+            },
+            {
+              "value": "fadeInDown",
+              "label": "Fade In Down"
+            },
+            {
+              "value": "fadeInLeft",
+              "label": "Fade In Left"
+            },
+            {
+              "value": "fadeInRight",
+              "label": "Fade In Right"
+            },
+            {
+              "value": "fadeInUp",
+              "label": "Fade In Up"
+            },
+            {
+              "value": "flipInX",
+              "label": "Flip In X"
+            },
+            {
+              "value": "flipInY",
+              "label": "Flip In Y"
+            },
+            {
+              "value": "lightSpeedIn",
+              "label": "Light Speed In"
+            },
+            {
+              "value": "slideInUp",
+              "label": "Slide In Up"
+            },
+            {
+              "value": "slideInRight",
+              "label": "Slide In Right"
+            },
+            {
+              "value": "slideInDown",
+              "label": "Slide In Down"
+            },
+            {
+              "value": "slideInLeft",
+              "label": "Slide In Left"
+            },
+            {
+              "value": "zoomIn",
+              "label": "Zoom In"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "block_buton",
+          "label": "Button slideshow",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "block_url",
+          "label": "URL button slideshow",
+          "default": "/collections/all"
+        },
+        {
+          "type": "select",
+          "id": "effect_button",
+          "label": "Choose The Effect Button",
+          "info": "[Reference effect in here](https://animate.style/)",
+          "options": [
+            {
+              "value": "bounce",
+              "label": "Bounce"
+            },
+            {
+              "value": "flash",
+              "label": "Flash"
+            },
+            {
+              "value": "pulse",
+              "label": "Pulse"
+            },
+            {
+              "value": "rubberBand",
+              "label": "Rubberband"
+            },
+            {
+              "value": "shake",
+              "label": "Shake"
+            },
+            {
+              "value": "swing",
+              "label": "Swing"
+            },
+            {
+              "value": "tada",
+              "label": "tada"
+            },
+            {
+              "value": "wobble",
+              "label": "Wobble"
+            },
+            {
+              "value": "jello",
+              "label": "Jello"
+            },
+            {
+              "value": "heartBeat",
+              "label": "HeartBeat"
+            },
+            {
+              "value": "backInDown",
+              "label": "Back In Down"
+            },
+            {
+              "value": "backInLeft",
+              "label": "Back In Left"
+            },
+            {
+              "value": "backInRight",
+              "label": "Back In Right"
+            },
+            {
+              "value": "backInUp",
+              "label": "Back In Up"
+            },
+            {
+              "value": "bounceIn",
+              "label": "BounceIn"
+            },
+            {
+              "value": "bounceInDown",
+              "label": "Bounce In Down"
+            },
+            {
+              "value": "bounceInLeft",
+              "label": "Bounce In Left"
+            },
+            {
+              "value": "bounceInRight",
+              "label": "Bounce In Right"
+            },
+            {
+              "value": "fadeIn",
+              "label": "Fade In"
+            },
+            {
+              "value": "fadeInDown",
+              "label": "Fade In Down"
+            },
+            {
+              "value": "fadeInLeft",
+              "label": "Fade In Left"
+            },
+            {
+              "value": "fadeInRight",
+              "label": "Fade In Right"
+            },
+            {
+              "value": "fadeInUp",
+              "label": "Fade In Up"
+            },
+            {
+              "value": "flipInX",
+              "label": "Flip In X"
+            },
+            {
+              "value": "flipInY",
+              "label": "Flip In Y"
+            },
+            {
+              "value": "lightSpeedIn",
+              "label": "Light Speed In"
+            },
+            {
+              "value": "slideInUp",
+              "label": "Slide In Up"
+            },
+            {
+              "value": "slideInRight",
+              "label": "Slide In Right"
+            },
+            {
+              "value": "slideInDown",
+              "label": "Slide In Down"
+            },
+            {
+              "value": "slideInLeft",
+              "label": "Slide In Left"
+            },
+            {
+              "value": "zoomIn",
+              "label": "Zoom In"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Background & color button"
+        },
+        {
+          "type": "color",
+          "id": "color_block_button",
+          "label": "Color button",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "color_block_button_hover",
+          "label": "Color button hover",
+          "default": "#ff6f00"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SLIDESHOW BANNER V1",
+      "category": "HOME",
+      "blocks": [
+        {
+          "type": "slideshow",
+          "settings": {
+            "block_title": "Funiter Chair"
+          }
+        },
+        {
+          "type": "slideshow",
+          "settings": {
+            "block_title": "Funiter Lamp"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

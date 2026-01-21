@@ -1,0 +1,155 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-newsletter-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-newsletter-v1" style="background-image: url({% if section.settings.bg_img != blank %}{{section.settings.bg_img | img_url: 'master'}}{% else %}//via.placeholder.com/1920x1080{% endif %})">
+    <div class="container container-v2">
+      <div class="content-newsletter">
+        <div class="info-newsletter text-center">
+          {% if section.settings.icon1 != blank %}
+          <div style="color: {{ section.settings.color_icon }}" class="icon">
+            <i class="{{section.settings.icon1}}"></i>
+          </div>
+          {% endif %}
+
+          {% if section.settings.title_newletter != blank %}
+          <h3 style="color: {{ section.settings.color_title }}" class="title-newsletter">
+            {{section.settings.title_newletter}}
+          </h3>
+          {% endif %}
+          {% if section.settings.description != blank %}
+          <p style="color: {{ section.settings.color_desc }}"  class="desc">
+            {{section.settings.description}}
+          </p>
+          {% endif %}
+
+        </div>
+        <div class="newletter_email">          
+          <form class="newsletter-form-wrap form-inline justify-content-center" action="{{ form_action }}" method="post">
+            <input type="email" name="EMAIL" class="form-control" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" required > 
+            <button class="btn submit-newsletter" type="submit">{{ 'general.newsletter_form.submit_footer' | t }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .section-newsletter-v1 .newletter_email .newsletter-form-wrap .submit-newsletter {
+    background: {{section.settings.bg_color_button}};
+    color: {{section.settings.color_button}};
+  }
+  .section-newsletter-v1 .newletter_email .newsletter-form-wrap .submit-newsletter:hover {
+    background: {{section.settings.bg_color_button_hover}};
+    color: {{section.settings.color_button_hover}};
+  }
+</style>
+{% schema %}
+{
+  "name": "NEWSLETTER V1",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Background image",
+      "info": "1920 x 1483px recommended"
+    },
+	{
+      "type": "header",
+      "info": "MailChimp form action URL: Setting in Login Store > Customize theme > Theme settings tab > Mailchimp",
+      "content": "Newsletter"
+    },
+	{
+      "type": "header",
+      "content": "Info newsletter"
+    },
+	{
+      "type": "text",
+      "id": "icon1",
+      "label": "Icon",
+      "default": "fa fa-envelope-open-o",
+      "info": "[Get icon in here](https:\/\/fontawesome.com\/v4.7.0\/icons)"
+    },
+    {
+      "type": "color",
+      "id": "color_icon",
+      "label": "Color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "title_newletter",
+      "label": "Title Newletter",
+      "default": "Newsletter Signup"
+    },
+    {
+      "type": "color",
+      "id": "color_title",
+      "label": "Color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Join our list and get 15% off your first purchase!"
+    },
+    {
+      "type": "color",
+      "id": "color_desc",
+      "label": "Color",
+      "default": "#fff"
+    },
+	{
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "color",
+      "id": "color_button",
+      "label": "Color Button",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_button",
+      "label": "Background Color",
+      "default": "#ff9638"
+    },
+    {
+      "type": "color",
+      "id": "color_button_hover",
+      "label": "Color Button Hover",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_button_hover",
+      "label": "Background Color Hover",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "NEWSLETTER V1",
+      "category": "HOME"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

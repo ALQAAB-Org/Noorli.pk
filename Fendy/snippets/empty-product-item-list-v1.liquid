@@ -1,0 +1,29 @@
+<div class="product-item">
+  <div class="product-inner">
+    <div class="product-thumb"> 
+      <a class="thumb-link" href="/admin/products"> 
+        {% capture current_1 %}{% cycle 1, 2, 3 %}{% endcapture %}
+        {{ 'product-' | append: current_1 | placeholder_svg_tag: 'placeholder-svg' }}
+      </a>
+      <div class="second-image"> 
+        <a href="/admin/products" class="thumb-link"> 
+          {% capture current_2 %}{% cycle 4, 5, 6 %}{% endcapture %}
+          {{ 'product-' | append: current_2 | placeholder_svg_tag: 'placeholder-svg' }}
+        </a>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name product_title mb-0"> 
+        <a href="/admin/products">Example Product</a>
+      </h3>
+      <div class="rating-wapper ">
+        <div class="star-rating">
+          <div class="rating rating-5"><span></span></div>
+        </div>
+      </div> 
+      <span class="price">
+        $150.00
+      </span>
+    </div>
+  </div>
+</div>

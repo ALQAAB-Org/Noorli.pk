@@ -1,0 +1,249 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v9" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{% endif %} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v9 mt-all">
+    <div class="container container-v2" style="background: #fff"> 
+      <div class="row">    
+        <div class="col-md-7">
+          <div class="banner-item">
+
+            <div class="box-video">
+              <a data-fancybox href="{{ section.settings.url_video1 }}">              
+                {% if section.settings.img_video1 != blank %}
+                <img loading="lazy" width="" height="" data-src="{{ section.settings.img_video1 | image_url }}" class="lazyload img-fluid w-100" alt="_img_banner_">
+                {% else %}
+                <img loading="lazy" width="" height="" data-src="https://via.placeholder.com/740x765" class="lazyload img-fluid w-100" alt="_img_banner_">
+                {% endif %}
+                <span class="box-btn">
+                  <span class="btn-banner">
+                    <i class="fa fa-play"></i>
+                    <span class="line-video line-1"></span>
+                    <span class="line-video line-2"></span>
+                    <span class="line-video line-3"></span>
+                  </span>
+                </span>
+              </a>  
+            </div>
+
+            <div>
+              <div class="content-banner">
+                {% if section.settings.title_banner1 != blank %}
+                <h3 class="title-banner" style="color: {{ section.settings.color_title_banner1 }}">{{ section.settings.title_banner1 }}</h3>
+                {% endif %}
+                {% if section.settings.banner1_sub1 != blank %}
+                <p class="subtitle1" style="color: {{ section.settings.color_sub1 }}">{{ section.settings.banner1_sub1 }}</p>
+                {% endif %}
+                {% if section.settings.banner1_sub2 != blank %}
+                <p class="subtitle2" style="color: {{ section.settings.color_sub2 }}">{{ section.settings.banner1_sub2 }}</p>
+                {% endif %}
+                {% if section.settings.btn_banner1 != blank %}
+                <a href="{{ section.settings.url_banner1 }}" class="btn-banner1 btn-banner1-{{ section.id }}">{{ section.settings.btn_banner1 }}<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                {% endif %}
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="banner-item">
+            <div class="banner-img">
+              <img loading="lazy" width="" height="" data-src="{% if section.settings.img_banner2 != blank %} {{ section.settings.img_banner2 | image_url }} {% else %} https://via.placeholder.com/520x500 {% endif %}" class="img-fluid lazyload">
+            </div>
+            {% if section.settings.content_banner2 != blank %}
+            <h3 class="content" style="color: {{ section.settings.color_content2 }}">{{ section.settings.content_banner2 }}</h3>
+            {% endif %}
+          </div>
+          <div class="banner-item">
+            <div class="banner-img">
+              <img loading="lazy" width="" height="" data-src="{% if section.settings.img_banner3 != blank %} {{ section.settings.img_banner3 | image_url }} {% else %} https://via.placeholder.com/520x500 {% endif %}" class="img-fluid lazyload">
+            </div>
+            {% if section.settings.content_banner3 != blank %}
+            <h3 class="content" style="color: {{ section.settings.color_content3 }}">{{ section.settings.content_banner3 }}</h3>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>	
+
+  .section-banner-v9 .banner-item .content-banner .btn-banner1-{{ section.id }} {
+    color: {{ section.settings.color_btn }};
+    background: {{ section.settings.bg_btn }};
+    transition: all .3s;
+  }
+  .section-banner-v9 .banner-item .content-banner .btn-banner1-{{ section.id }}:hover {
+    color: {{ section.settings.color_btn_hover }};
+    background: {{ section.settings.bg_btn_hover }};
+  }
+
+</style>
+
+{% schema %}
+{
+  "name": "BANNER V9",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_video1",
+      "info": "600 x 600px recommended",
+      "label": "Banner Video"
+    },
+    {
+      "type": "url",
+      "id": "url_video1",
+      "label": "URL Video",
+      "info": "[Upload video .mp4 in here](/admin/settings/files)"
+    },
+    {
+      "type": "text",
+      "id": "title_banner1",
+      "label": "Title Banner 1",
+      "default": "The Decorks Candle Story"
+    },
+    {
+      "type": "color",
+      "id": "color_title_banner1",
+      "label": "Color",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "banner1_sub1",
+      "label": "Sub title 1",
+      "default": "We like to think of our wares as full sensory experiences!"
+    },
+    {
+      "type": "color",
+      "id": "color_sub1",
+      "label": "Color",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "banner1_sub2",
+      "label": "Content",
+      "default": "Light it up each day to clean your body and soul and get ready for Christmas. All our candles are made of raw beeswax and come infused with eco friendly scents or simply unscented. "
+    },
+    {
+      "type": "color",
+      "id": "color_sub2",
+      "label": "Color",
+      "default": "#797979"
+    },
+    {
+      "type": "text",
+      "id": "btn_banner1",
+      "label": "Title",
+      "default": "Discovery Now"
+    },
+    {
+      "type": "url",
+      "id": "url_banner1",
+      "label": "URL Banner 1 ",
+      "default": "/collections/all"
+    },
+    {
+      "type": "color",
+      "id": "color_btn",
+      "label": "Color Button",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bg_btn",
+      "label": "Background Button",
+      "default": "#cc8253"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_hover",
+      "label": "Color Button Hover",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bg_btn_hover",
+      "label": "Background Button Hover",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Banner 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner2",
+      "info": "520 x 520px recommended",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "content_banner2",
+      "label": "Title Banner 1",
+      "default": "Handcrafted by a<br> team of artisans."
+    },
+    {
+      "type": "color",
+      "id": "color_content2",
+      "label": "Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Banner 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner3",
+      "info": "520 x 520px recommended",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "content_banner3",
+      "label": "Title Banner 1",
+      "default": "We use 100% soy<br> wax derived."
+    },
+    {
+      "type": "color",
+      "id": "color_content3",
+      "label": "Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "BANNER V9",
+      "category": "HOME"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
